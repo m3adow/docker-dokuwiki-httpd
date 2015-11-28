@@ -12,9 +12,9 @@ usage(){
 while getopts ":u:g:f" opt
 do
 	case $opt in
-		u) NUUID=${OPTARG}
+		u) WWW_UID=${OPTARG}
 		;;
-		g) NUGID=${OPTARG}
+		g) WWW_GID=${OPTARG}
 		;;
 		f) FORCE=1
 		;;
@@ -24,32 +24,32 @@ do
 done
 shift $((OPTIND-1))
 
-NUUID=${NUUID:-${DEFAULT_UID}}
-NUGID=${NUGID:-${DEFAULT_GID}}
+WWW_UID=${WWW_UID:-${DEFAULT_UID}}
+WWW_GID=${WWW_GID:-${DEFAULT_GID}}
 FORCE=${FORCE:-0}
 
-if [ ${NUUID} -eq ${DEFAULT_UID} ] && [ ${NUGID} -eq ${DEFAULT_GID} ]
+if [ ${WWW_UID} -eq ${DEFAULT_UID} ] && [ ${WWW_GID} -eq ${DEFAULT_GID} ]
 then
 	# printf "Not changing anything.\n"
 	:
-elif [ ${NUUID} -eq 0 ] || [ ${NUGID} -eq 0 ] && [ ${FORCE} -ne 1 ]
+elif [ ${WWW_UID} -eq 0 ] || [ ${WWW_GID} -eq 0 ] && [ ${FORCE} -ne 1 ]
 then
 	printf "ID 0 without -f. Won't change anything.\n"
 elif [ `id -u` -ne 0 ]
 then
 	printf "Need root permissions for this script.\n"
 else
-	if [ "${NUUID}" -ne ${DEFAULT_UID} ]
+	if [ "${WWW_UID}" -ne ${DEFAULT_UID} ]
 	then
-		# printf "Changing UID to %s\n" "${NUUID}"
-		usermod -u "${NUUID}" www-data
-		chown -R --from="33" ${NUUID} `find /* -maxdepth 0 -path /proc -prune -o -print`
+		# printf "Changing UID to %s\n" "${WWW_UID}"
+		usermod -u "${WWW_UID}" www-data
+		chown -R --from="33" ${WWW_UID} `find /* -maxdepth 0 -path /proc -prune -o -print`
 	fi
-	if [ "${NUGID}" -ne ${DEFAULT_GID} ]
+	if [ "${WWW_GID}" -ne ${DEFAULT_GID} ]
 	then
-		# printf "Changing GID to %s\n" "${NUGID}"
-		groupmod -g "${NUGID}" www-data
-		chown -R --from=":33" :${NUGID} `find /* -maxdepth 0 -path /proc -prune -o -print`
+		# printf "Changing GID to %s\n" "${WWW_GID}"
+		groupmod -g "${WWW_GID}" www-data
+		chown -R --from=":33" :${WWW_GID} `find /* -maxdepth 0 -path /proc -prune -o -print`
 	fi
 fi
 exec "$@"
