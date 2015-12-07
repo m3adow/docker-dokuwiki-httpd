@@ -1,0 +1,3 @@
+[submodule "wannabe-user.sh"]
+	path = wannabe-user.sh
+	url = https://github.com/m3adow/wannabe-user.sh.git
