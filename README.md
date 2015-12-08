@@ -21,7 +21,7 @@ The container is configured to automatically change the UID and GID of `www-data
 
 Here's an example running the container:
 
-    docker run -e "WWW_UID=1337" -e "WWW_GID=1337" -ti -p 80:80 -p 443:443 -v "/dokuwiki/data/pages/:/var/www/html/data/pages/" -v "/dokuwiki/data/meta/:/var/www/html/data/meta/" -v "/dokuwiki/data/media/:/var/www/html/data/media/" -v "/dokuwiki/data/media_meta/:/var/www/html/data/media_meta/" -v "/dokuwiki/data/attic/:/var/www/html/data/attic/" -v "/dokuwiki/data/media_attic/:/var/www/html/data/media_attic/" -v "/dokuwiki/conf/:/var/www/html/conf/" -v "/dokuwiki/lib/plugins/:/var/www/html/lib/plugins/" m3adow/dokuwiki
+    docker run -ti -p 80:80 -p 443:443 -v "/dokuwiki/data/pages/:/var/www/html/data/pages/" -v "/dokuwiki/data/meta/:/var/www/html/data/meta/" -v "/dokuwiki/data/media/:/var/www/html/data/media/" -v "/dokuwiki/data/media_meta/:/var/www/html/data/media_meta/" -v "/dokuwiki/data/attic/:/var/www/html/data/attic/" -v "/dokuwiki/data/media_attic/:/var/www/html/data/media_attic/" -v "/dokuwiki/conf/:/var/www/html/conf/" -v "/dokuwiki/lib/plugins/:/var/www/html/lib/plugins/" m3adow/dokuwiki
 
 
 Please report any bugs or errors as well as feature requests.
