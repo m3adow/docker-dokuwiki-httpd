@@ -17,7 +17,7 @@ For now, if you're creating a new Dokuwiki instance without existing content and
 
 Furthermore you must of course expose the HTTP & HTTPS port.
 
-Additionally, as the httpd is not running under root, you need to equalize the UID and/or GID of the `www-data` user with the user whom the dokuwiki files belong to on your host. This can be done by setting two environment variables, `WWW_UID` for the UID and `WWW_GID` for the GID.
+The container is configured to automatically change the UID and GID of `www-data` to those of the directory `/var/html/www/conf` (as long as those don't belong to root). This should grant the Apache process and therefore Dokuwiki write permissions immediately without any needed user interference.
 
 Here's an example running the container:
 

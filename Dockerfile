@@ -7,7 +7,6 @@ RUN curl http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xzv
 	&& rm -r /var/lib/apt/lists/* \
 	&& chown -R www-data:www-data /var/www/html/??*
 COPY ["./wannabe-user.sh/wannabe-user.sh", "/usr/local/bin/"]
-
 VOLUME ["/var/www/html/data/pages/", "/var/www/html/data/meta/", "/var/www/html/data/media/", \
 	"/var/www/html/data/media_meta/", "/var/www/html/data/attic/", \
 	"/var/www/html/data/media_attic/", "/var/www/html/conf/", "/var/www/html/lib/plugins"]
