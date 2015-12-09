@@ -1,5 +1,7 @@
 # Dokuwiki Apache2 Docker Container
 
+[![Build Status](https://travis-ci.org/m3adow/docker-dokuwiki-httpd.svg)](https://travis-ci.org/m3adow/docker-dokuwiki-httpd)
+
 This is a Docker Container with Dokuwiki using the official `php:apache` baseimage. The image is built with the latest Dokuwiki release. It is in an early stage, so please report any occuring errors or bugs. Please be aware I haven't yet looked into serving HTTPS.
 
 
