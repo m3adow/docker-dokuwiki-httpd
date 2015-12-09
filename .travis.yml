@@ -8,8 +8,8 @@ services:
 # Build the container and touch a file with different IDs than the www-data USER within the container
 before_install:
   - docker build -t dokuwiki .
-  - touch conf
+  - touch "${TRAVIS_BUILD_DIR}/conf"
 
 # Use the conf file as volume and check if the IDs were changed accordingly
 script:
-  - docker run -v "./conf:/var/www/html/conf" dokuwiki bash -c '[ $(grep www-data /etc/passwd|cut -d ":" -f3) -eq $(stat -c "%u" /var/www/html/conf) ] || [ $(grep www-data /etc/passwd|cut -d ':' -f4) -eq $(stat -c "%g" /var/www/html/conf) ]'
+  - docker run -v "${TRAVIS_BUILD_DIR}/conf:/var/www/html/conf" dokuwiki bash -c '[ $(grep www-data /etc/passwd|cut -d ":" -f3) -eq $(stat -c "%u" /var/www/html/conf) ] || [ $(grep www-data /etc/passwd|cut -d ':' -f4) -eq $(stat -c "%g" /var/www/html/conf) ]'
