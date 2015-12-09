@@ -8,7 +8,7 @@ services:
 # Build the container and touch a file with different IDs than the www-data USER within the container
 before_install:
   - docker build -t dokuwiki .
-  - touch "${TRAVIS_BUILD_DIR}/conf"
+  - mkdir "${TRAVIS_BUILD_DIR}/conf"
 
 # Use the conf file as volume and check if the IDs were changed accordingly
 script:
