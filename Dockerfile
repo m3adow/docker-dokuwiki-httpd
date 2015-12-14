@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:5-apache
 MAINTAINER m3adow
 
 RUN curl http://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz | tar xzvf - --strip 1 \
